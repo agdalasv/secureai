@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure AI - Asistente de Seguridad Local</title>
+    <meta name="description" content="Secure AI es un asistente de seguridad inteligente para Windows. Protección 100% local contra malware, ransomware, amenazas de red y más.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/logo.png" alt="Secure AI" height="40" class="me-2">
+                <span class="brand-text">Secure <span class="text-accent">AI</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Características</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Arquitectura</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#plus">Secure AI Plus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#screenshots">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#download">Descargar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-7 hero-content">
+                    <div class="badge-container mb-3">
+                        <span class="badge-glow">v1.0.0</span>
+                        <span class="badge-glow ms-2">100% Local</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Tu <span class="text-accent typing-text"></span><span class="cursor">|</span>
+                        <br>Sin depender de la nube
+                    </h1>
+                    <p class="hero-description">
+                        Secure AI protege tu equipo con inteligencia artificial experta en malware, redes y defensa activa. 
+                        Todo ejecutándose <strong>100% local</strong>, sin telemetría, sin comprometer tu privacidad.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                            <span class="stat-label">Local</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="7">0</span>
+                            <span class="stat-label">Módulos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+                            <span class="stat-label">Protección</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons mt-4">
+                        <a href="#download" class="btn btn-glow btn-lg me-3">
+                            <i class="bi bi-download me-2"></i>Descargar
+                        </a>
+                        <a href="#features" class="btn btn-outline-glow btn-lg">
+                            <i class="bi bi-info-circle me-2"></i>Conocer Más
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center hero-visual">
+                    <div class="shield-container">
+                        <div class="shield-glow"></div>
+                        <img src="img/logo.png" alt="Secure AI Shield" class="img-fluid shield-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Protección <span class="text-accent">Inteligente</span></h2>
+                <p class="section-subtitle">Siete módulos trabajando en conjunto para proteger tu sistema</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card" data-aos>
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-shaded"></i>
+                        </div>
+                        <h3>Anti-Malware</h3>
+                        <p>Escaneo heurístico de archivos con análisis de entropía, detección de packers, y análisis estructural PE.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card" data-aos>
+                        <div class="feature-icon">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                        <h3>Monitoreo en Tiempo Real</h3>
+                        <p>Vigilancia continua de procesos, puertos, cambios en archivos y dispositivos USB en tiempo real.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card" data-aos>
+                        <div class="feature-icon">
+                            <i class="bi bi-globe2"></i>
+                        </div>
+                        <h3>Detección de Red</h3>
+                        <p>Identifica DoS/DDoS, backdoors, shells inversas, botnets C2, túneles DNS y desautenticación Wi-Fi.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card" data-aos>
+                        <div class="feature-icon">
+                            <i class="bi bi-lock-fill"></i>
+                        </div>
+                        <h3>Anti-Ransomware</h3>
+                        <p>Monitorea directorios sensibles y detecta cifrado masivo de archivos y notas de rescate.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card" data-aos>
+                        <div class="feature-icon">
+                            <i class="bi bi-gear-wide-connected"></i>
+                        </div>
+                        <h3>Anti-Rootkit</h3>
+                        <p>Escanea controladores del sistema contra bases de rootkits conocidos para detectar infecciones ocultas.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card" data-aos>
+                        <div class="feature-icon">
+                            <i class="bi bi-flag-fill"></i>
+                        </div>
+                        <h3>Detección de Persistencia</h3>
+                        <p>Verifica entradas sospechosas en el Registro de Windows que indican mecanismos de persistencia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture" class="section section-dark">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Arquitectura <span class="text-accent">del Sistema</span></h2>
+                <p class="section-subtitle">Una estructura modular potenciada por inteligencia artificial</p>
+            </div>
+            <div class="architecture-diagram">
+                <div class="arch-node main-ai">
+                    <div class="arch-icon"><i class="bi bi-cpu"></i></div>
+                    <h4>Secure AI</h4>
+                    <span>Comandante Principal</span>
+                </div>
+                <div class="arch-connections">
+                    <div class="arch-line"></div>
+                </div>
+                <div class="arch-children">
+                    <div class="arch-node sub-ai">
+                        <div class="arch-icon"><i class="bi bi-bug-fill"></i></div>
+                        <h4>AI Experta en Malware</h4>
+                        <span>Procesos, Ransomware, Rootkits</span>
+                    </div>
+                    <div class="arch-node sub-ai">
+                        <div class="arch-icon"><i class="bi bi-hdd-network"></i></div>
+                        <h4>AI Experta en Red</h4>
+                        <span>DoS, Backdoors, C2, Firewall</span>
+                    </div>
+                    <div class="arch-node sub-ai">
+                        <div class="arch-icon"><i class="bi bi-shield-fill-check"></i></div>
+                        <h4>Escudo de Defensa</h4>
+                        <span>3 Niveles de Protección</span>
+                    </div>
+                    <div class="arch-node sub-ai">
+                        <div class="arch-icon"><i class="bi bi-usb-drive"></i></div>
+                        <h4>Escáner USB</h4>
+                        <span>Análisis Automático</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="plus" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Secure AI <span class="text-accent">Plus</span></h2>
+                <p class="section-subtitle">Potencia tu protección con micro-inteligencias artificiales expertas</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="plus-card">
+                        <div class="plus-icon">
+                            <i class="bi bi-motherboard"></i>
+                        </div>
+                        <h3>AI Malware</h3>
+                        <ul>
+                            <li>Escaneo en memoria</li>
+                            <li>Ransomware avanzado</li>
+                            <li>Rootkits kernel</li>
+                            <li>Persistencia</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="plus-card">
+                        <div class="plus-icon">
+                            <i class="bi bi-router"></i>
+                        </div>
+                        <h3>AI Red</h3>
+                        <ul>
+                            <li>Bloqueo automático</li>
+                            <li>Informes JSON</li>
+                            <li>C2/Botnets</li>
+                            <li>DNS Tunneling</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="plus-card">
+                        <div class="plus-icon">
+                            <i class="bi bi-shield-fill-exclamation"></i>
+                        </div>
+                        <h3>Escudo Defensa</h3>
+                        <ul>
+                            <li>3 niveles</li>
+                            <li>Bloqueo firewall</li>
+                            <li>Aislamiento</li>
+                            <li>Emergencia</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="plus-card">
+                        <div class="plus-icon">
+                            <i class="bi bi-usb-plug"></i>
+                        </div>
+                        <h3>Escáner USB</h3>
+                        <ul>
+                            <li>Auto-análisis</li>
+                            <li>Autorun.inf</li>
+                            <li>Inserción USB</li>
+                            <li>Protección periférica</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <div class="plus-cta">
+                    <p class="mb-3">Desbloquea el poder completo de Secure AI</p>
+                    <a href="mailto:agdala.sv@gmail.com" class="btn btn-glow btn-lg">
+                        <i class="bi bi-envelope-fill me-2"></i>Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots" class="section section-dark">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Vista <span class="text-accent">Previa</span></h2>
+                <p class="section-subtitle">Interfaz profesional y fácil de usar</p>
+            </div>
+            <div class="screenshot-carousel">
+                <div class="row g-3">
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/1.png" alt="Dashboard" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Dashboard Principal</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/2.png" alt="Escaneo" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Escaneo de Archivos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/3.png" alt="Red" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Monitoreo de Red</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/4.png" alt="Configuración" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Configuración</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/5.png" alt="Historial" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Historial de Eventos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/6.png" alt="Cuarentena" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Cuarentena</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/7.png" alt="Plus" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Secure AI Plus</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="screenshot-item">
+                            <img src="img/8.png" alt="Amenaza" class="img-fluid">
+                            <div class="screenshot-overlay">
+                                <span>Detalle de Amenaza</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Descarga <span class="text-accent">Secure AI</span></h2>
+                <p class="section-subtitle">Protege tu equipo ahora. 100% gratis y local.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="download-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 text-center">
+                                <img src="img/logo.png" alt="Secure AI" class="img-fluid download-logo">
+                            </div>
+                            <div class="col-md-7">
+                                <h3>Secure AI v1.0.0</h3>
+                                <div class="download-info">
+                                    <span><i class="bi bi-windows"></i> Windows 10/11 (64-bit)</span>
+                                    <span><i class="bi bi-cpu"></i> .NET 8.0</span>
+                                    <span><i class="bi bi-shield-check"></i> Requiere Administrador</span>
+                                </div>
+                                <p class="mt-3">Incluye protección heurística, monitoreo en tiempo real, detección de amenazas de red y más.</p>
+                                <a href="../SecureAI-1.0.0.msi" class="btn btn-glow btn-lg w-100" download>
+                                    <i class="bi bi-download me-2"></i>Descargar Instalador (80 MB)
+                                </a>
+                                <div class="mt-2 small text-muted">Self-contained. No requiere .NET Runtime.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-6">
+                    <div class="requirements-card">
+                        <h4><i class="bi bi-info-circle me-2"></i>Requisitos del Sistema</h4>
+                        <ul>
+                            <li>Windows 10 o superior (64 bits)</li>
+                            <li>.NET 8.0 Runtime (incluido en el instalador)</li>
+                            <li>Arquitectura x64</li>
+                            <li>Privilegios de Administrador</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="img/logo.png" alt="Secure AI" height="30" class="me-2">
+                        <span class="footer-brand">Secure <span class="text-accent">AI</span></span>
+                    </div>
+                    <p class="text-muted">Protección inteligente 100% local. Sin nube, sin telemetría, sin compromisos.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Enlaces</h5>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#architecture">Arquitectura</a></li>
+                        <li><a href="#download">Descargar</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contacto</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:agdala.sv@gmail.com"><i class="bi bi-envelope me-2"></i>agdala.sv@gmail.com</a></li>
+                        <li><a href="#"><i class="bi bi-github me-2"></i>GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Agdala. Todos los derechos reservados.</p>
+                <p class="text-muted small">100% local. Zero telemetry. Zero cloud dependency.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

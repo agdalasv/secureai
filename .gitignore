@@ -1,0 +1,29 @@
+# Build
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# Installer artifacts
+*.wixpdb
+*.msi
+publish/
+Secureia.Installer/publish/
+.wix/
+
+# IDE
+.vs/
+.vscode/
+*.csproj.user
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Runtime
+**/*.runtimeconfig.json
+**/*.deps.json
+
+# Token (never commit)
+token.txt
+btc.txt

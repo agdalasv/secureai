@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+    <Package Name="Secure AI"
+             Version="1.0.0"
+             Manufacturer="Secure AI"
+             UpgradeCode="A1B2C3D4-E5F6-7890-ABCD-EF1234567890"
+             Scope="perMachine">
+
+        <SummaryInformation Description="Secure AI - Asistente de Seguridad Local" />
+
+        <MajorUpgrade DowngradeErrorMessage="Ya existe una versión más reciente de Secure AI instalada." />
+
+        <MediaTemplate EmbedCab="yes" />
+
+        <!-- Application icon for ARP -->
+        <Icon Id="app.ico" SourceFile="..\logo.png" />
+        <Property Id="ARPPRODUCTICON" Value="app.ico" />
+        <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+
+        <!-- .NET 8 Runtime check -->
+        <Property Id="DOTNET8_RUNTIME" Secure="yes">
+            <RegistrySearch Id="Net8RuntimeSearch"
+                            Root="HKLM"
+                            Key="SOFTWARE\dotnet\Setup\InstalledVersions\$fx\sharedfx\Microsoft.NETCore.App"
+                            Name="8.0.0"
+                            Type="raw" />
+        </Property>
+
+        <!-- Install directory: Program Files -->
+        <StandardDirectory Id="ProgramFiles64Folder">
+            <Directory Id="INSTALLFOLDER" Name="Secure AI">
+                <Component Id="Secureia_Exe" Bitness="always64" Guid="B7E3F2A1-8C4D-4E5F-9A0B-1C2D3E4F5A6B">
+                    <File Source="Secureia.exe" Checksum="yes" ProcessorArchitecture="x64" />
+                </Component>
+                <Component Id="Secureia_Dll" Bitness="always64" Guid="C8F4A3B2-9D5E-4F6A-0B1C-2D3E4F5A6B7C">
+                    <File Source="Secureia.dll" />
+                </Component>
+
+                <Component Id="AppLogo" Guid="B3C4D5E6-F7A8-4B9C-0D1E-2F3A4B5C6D7E">
+                    <File Id="AppLogoFile" Source="logo.png" Name="logo.png" />
+                </Component>
+            </Directory>
+        </StandardDirectory>
+
+        <!-- Desktop shortcut -->
+        <StandardDirectory Id="DesktopFolder">
+            <Component Id="DesktopShortcut" Guid="5A8B3C2D-1E4F-4A6B-8C9D-0E1F2A3B4C5D">
+                <Shortcut Id="SecureiaDesktopShortcut"
+                          Name="Secure AI"
+                          Description="Secure AI - Asistente de Seguridad Local"
+                          Target="[INSTALLFOLDER]Secureia.exe"
+                          WorkingDirectory="INSTALLFOLDER" />
+                <RegistryValue Root="HKCU"
+                               Key="Software\SecureAI"
+                               Name="DesktopShortcut"
+                               Type="integer"
+                               Value="1" />
+            </Component>
+        </StandardDirectory>
+
+        <!-- Start Menu shortcut -->
+        <StandardDirectory Id="ProgramMenuFolder">
+            <Directory Id="SecureiaStartMenuDir" Name="Secure AI">
+                <Component Id="StartMenuShortcut" Guid="6B9C4D3E-2F5A-4B7C-9D0E-1F2A3B4C5D6E">
+                    <Shortcut Id="SecureiaStartMenuShortcut"
+                              Name="Secure AI"
+                              Description="Secure AI - Asistente de Seguridad Local"
+                              Target="[INSTALLFOLDER]Secureia.exe"
+                              WorkingDirectory="INSTALLFOLDER" />
+                    <Shortcut Id="SecureiaUninstallShortcut"
+                              Name="Desinstalar Secure AI"
+                              Description="Desinstala Secure AI del sistema"
+                              Target="[System64Folder]msiexec.exe"
+                              Arguments="/x [ProductCode]" />
+                    <RegistryValue Root="HKCU"
+                                   Key="Software\SecureAI"
+                                   Name="StartMenuShortcut"
+                                   Type="integer"
+                                   Value="1" />
+                </Component>
+            </Directory>
+        </StandardDirectory>
+
+        <!-- Features -->
+        <Feature Id="MainFeature"
+                 Title="Secure AI"
+                 Description="Instala Secure AI - Asistente de Seguridad Local"
+                 Level="1"
+                 ConfigurableDirectory="INSTALLFOLDER">
+            <Feature Id="AppFiles" Title="Archivos de la aplicación" Level="1">
+                <ComponentRef Id="Secureia_Exe" />
+                <ComponentRef Id="Secureia_Dll" />
+                <ComponentRef Id="AppLogo" />
+            </Feature>
+            <Feature Id="Shortcuts" Title="Accesos directos" Level="1">
+                <ComponentRef Id="DesktopShortcut" />
+                <ComponentRef Id="StartMenuShortcut" />
+            </Feature>
+            <ComponentGroupRef Id="PublishedFiles" />
+        </Feature>
+
+        <!-- MSI UI -->
+        <UI>
+            <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+        </UI>
+
+        <!-- Install sequence - RemoveExistingProducts is handled by MajorUpgrade -->
+    </Package>
+
+    <!-- Launch conditions -->
+    <Fragment>
+        <Launch Condition="DOTNET8_RUNTIME" Message="Secure AI requiere .NET 8 Runtime. Descárgalo desde: https://dotnet.microsoft.com/download/dotnet/8.0" />
+        <Launch Condition="VersionNT64 &lt; 1000" Message="Secure AI solo es compatible con Windows 10 o Windows 11." />
+    </Fragment>
+</Wix>

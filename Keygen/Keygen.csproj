@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>..\Secureia\app.manifest</ApplicationManifest>
+    <AssemblyName>SecureAI-Keygen</AssemblyName>
+    <Title>SecureAI Plus - Generador de Licencias</Title>
+    <Product>SecureAI Plus Keygen</Product>
+    <Description>Generador de claves de activación para SecureAI Plus</Description>
+  </PropertyGroup>
+
+</Project>
