@@ -1,0 +1,101 @@
+<UserControl x:Class="Secureia.Views.ScanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Background="#1a1a2e">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="30,25,30,10">
+            <TextBlock Text="Escaneo de seguridad" FontSize="28" FontWeight="Bold" Foreground="#E0E0E0" Margin="0,0,0,15"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                <Button Content="Escaneo rápido" Command="{Binding Scan.ScanQuickCommand}"
+                        Style="{StaticResource PrimaryButton}" Margin="0,0,10,0"/>
+                <Button Content="Escaneo completo" Command="{Binding Scan.ScanFullCommand}"
+                        Style="{StaticResource PrimaryButton}" Margin="0,0,10,0"/>
+                <Button Content="Cancelar" Command="{Binding Scan.CancelCommand}"
+                        Style="{StaticResource DangerButton}" IsEnabled="{Binding Scan.IsScanning}"/>
+            </StackPanel>
+
+            <WrapPanel Margin="0,0,0,10">
+                <TextBlock Text="Ruta:" FontSize="14" Foreground="#DDD" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox Text="{Binding Scan.ScanPath, UpdateSourceTrigger=PropertyChanged}" 
+                         Width="400" Background="#16213E" Foreground="#E0E0E0" BorderBrush="#333" 
+                         BorderThickness="1" Padding="8" FontSize="13"/>
+            </WrapPanel>
+
+            <Border Background="#16213E" CornerRadius="8" Padding="15" Margin="0,0,0,10"
+                    Visibility="{Binding Scan.IsScanning, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel>
+                    <TextBlock Text="{Binding Scan.Status}" FontSize="13" Foreground="#DDD" Margin="0,0,0,8"/>
+                    <ProgressBar Value="{Binding Scan.Progress}" Maximum="{Binding Scan.Total}" 
+                                 Height="6" Foreground="#4FC3F7" Background="#333"/>
+                    <TextBlock Text="{Binding Scan.Progress, StringFormat='{}{0} archivos procesados'}" 
+                               FontSize="12" Foreground="#AAA" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <Border Grid.Row="1" Background="#16213E" CornerRadius="12" Margin="30,0,30,30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Resultados del escaneo" FontSize="16" FontWeight="SemiBold" 
+                           Foreground="#E0E0E0" Margin="15,12"/>
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Scan.Results}" 
+                          Background="Transparent" BorderThickness="0"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#0F3460" CornerRadius="8" Padding="12" Margin="5,3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0" Width="36" Height="36" CornerRadius="18" 
+                                            Background="#FF5252" VerticalAlignment="Center" Margin="0,0,12,0">
+                                        <TextBlock Text="!" FontSize="18" FontWeight="Bold" 
+                                                   Foreground="White" HorizontalAlignment="Center" 
+                                                   VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding FileName}" FontSize="14" FontWeight="SemiBold" 
+                                                   Foreground="#E0E0E0" TextTrimming="CharacterEllipsis"/>
+                                        <TextBlock Text="{Binding ThreatName}" FontSize="12" Foreground="#FF5252" 
+                                                   TextTrimming="CharacterEllipsis" Margin="0,2,0,0"/>
+                                        <TextBlock Text="{Binding FilePath}" FontSize="11" Foreground="#AAA" 
+                                                   TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Button Content="Abrir carpeta" Command="{Binding DataContext.Scan.OpenFolderCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" Style="{StaticResource SmallButton}" Margin="0,0,5,0"/>
+                                        <Button Content="Cuarentena" Command="{Binding DataContext.Scan.QuarantineCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" Style="{StaticResource SmallButton}" Margin="0,0,5,0"/>
+                                        <Button Content="Eliminar" Command="{Binding DataContext.Scan.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" Style="{StaticResource DangerSmallButton}" Margin="0,0,5,0"/>
+                                        <Button Content="Ignorar" Command="{Binding DataContext.Scan.IgnoreCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" Style="{StaticResource SmallButton}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

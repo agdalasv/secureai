@@ -66,6 +66,7 @@ La versión Plus activa micro-inteligencias artificiales expertas:
 |--------|---------|
 | **AI Experta en Malware** | Escaneo de procesos en memoria, detección de ransomware, rootkits y persistencia |
 | **AI Experta en Red** | Detección y bloqueo automático de DoS/DDoS, backdoors, shells inversas, C2/botnets |
+| **Shadow Helper AI** | 4ª IA sigilosa de apoyo. Analiza memoria, registro, ubicaciones vulnerables y conexiones encubiertas. Se activa bajo demanda cuando la Main AI necesita refuerzos |
 | **Escudo de Defensa** | Sistema de 3 niveles de defensa: monitoreo, bloqueo firewall y aislamiento |
 | **Escáner USB Automático** | Análisis automático de dispositivos USB al insertarse |
 

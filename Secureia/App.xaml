@@ -1,0 +1,16 @@
+﻿<Application x:Class="Secureia.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:Secureia.Converters"
+             xmlns:local="clr-namespace:Secureia">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+            <converters:NetworkThreatBorderConverter x:Key="NetworkThreatBorderConverter"/>
+            <converters:NetworkThreatCursorConverter x:Key="NetworkThreatCursorConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
