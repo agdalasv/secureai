@@ -1052,18 +1052,6 @@
       <Component Id="cmp_349" Guid="*" Subdirectory="ja">
         <File Id="fil_349" Source="ja\WindowsFormsIntegration.resources.dll" />
       </Component>
-      <Component Id="cmp_350" Guid="*" Subdirectory="keygen">
-        <File Id="fil_350" Source="keygen\SecureAI-Keygen.deps.json" />
-      </Component>
-      <Component Id="cmp_351" Guid="*" Subdirectory="keygen">
-        <File Id="fil_351" Source="keygen\SecureAI-Keygen.dll" />
-      </Component>
-      <Component Id="cmp_352" Guid="*" Subdirectory="keygen">
-        <File Id="fil_352" Source="keygen\SecureAI-Keygen.exe" />
-      </Component>
-      <Component Id="cmp_353" Guid="*" Subdirectory="keygen">
-        <File Id="fil_353" Source="keygen\SecureAI-Keygen.runtimeconfig.json" />
-      </Component>
       <Component Id="cmp_354" Guid="*" Subdirectory="ko">
         <File Id="fil_354" Source="ko\Microsoft.VisualBasic.Forms.resources.dll" />
       </Component>

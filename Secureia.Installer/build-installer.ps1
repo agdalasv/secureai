@@ -3,24 +3,15 @@ $projectRoot = "C:\Users\turbo\Desktop\secureia"
 $publishDir = "$projectRoot\publish"
 $installerDir = "$projectRoot\Secureia.Installer"
 
-Write-Host "=== Step 1: Restore projects ===" -ForegroundColor Cyan
+Write-Host "=== Step 1: Restore project ===" -ForegroundColor Cyan
 & "C:\Program Files\dotnet\dotnet.exe" restore "$projectRoot\Secureia\Secureia.csproj"
 if (-not $?) { throw "Secureia restore failed" }
-& "C:\Program Files\dotnet\dotnet.exe" restore "$projectRoot\Keygen\Keygen.csproj"
-if (-not $?) { throw "Keygen restore failed" }
 
 Write-Host "=== Step 2: Publish Secureia (self-contained) ===" -ForegroundColor Cyan
 Remove-Item -LiteralPath $publishDir -Recurse -Force -ErrorAction SilentlyContinue
 & "C:\Program Files\dotnet\dotnet.exe" publish "$projectRoot\Secureia\Secureia.csproj" `
     -c Release -r win-x64 --self-contained true -o $publishDir
 if (-not $?) { throw "Secureia publish failed" }
-
-Write-Host "=== Step 3: Publish Keygen (framework-dependent) ===" -ForegroundColor Cyan
-$keygenPublishDir = "$publishDir\keygen"
-Remove-Item -LiteralPath $keygenPublishDir -Recurse -Force -ErrorAction SilentlyContinue
-& "C:\Program Files\dotnet\dotnet.exe" publish "$projectRoot\Keygen\Keygen.csproj" `
-    -c Release -o $keygenPublishDir
-if (-not $?) { throw "Keygen publish failed" }
 
 # Copy installer assets to publish directory
 Copy-Item -LiteralPath "$projectRoot\logo.png" -Destination "$publishDir\logo.png" -Force
