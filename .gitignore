@@ -6,9 +6,7 @@
 
 # Installer artifacts
 *.wixpdb
-*.msi
 publish/
-Secureia.Installer/publish/
 .wix/
 
 # IDE
