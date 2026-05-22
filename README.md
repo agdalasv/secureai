@@ -96,7 +96,7 @@ La versión Plus activa micro-inteligencias artificiales expertas:
 
 ## 📥 Descargar
 
-Descarga la última versión desde la [página de releases](../../releases) o directamente el [instalador MSI](SecureAI-1.0.0.msi).
+Descarga la última versión desde la [página de releases](https://github.com/agdalasv/secureai/releases) o directamente el [instalador MSI](https://github.com/agdalasv/secureai/releases/download/v1.0.0/SecureAI-1.0.0.msi).
 
 ## 📬 Contacto
 
