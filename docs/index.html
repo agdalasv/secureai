@@ -285,64 +285,64 @@
             <div class="screenshot-carousel">
                 <div class="row g-3">
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/1.png" alt="Dashboard" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/1.png" alt="Dashboard" class="img-fluid" data-title="Dashboard Principal">
                             <div class="screenshot-overlay">
                                 <span>Dashboard Principal</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/2.png" alt="Escaneo" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/2.png" alt="Escaneo" class="img-fluid" data-title="Escaneo de Archivos">
                             <div class="screenshot-overlay">
                                 <span>Escaneo de Archivos</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/3.png" alt="Red" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/3.png" alt="Red" class="img-fluid" data-title="Monitoreo de Red">
                             <div class="screenshot-overlay">
                                 <span>Monitoreo de Red</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/4.png" alt="Configuración" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/4.png" alt="Configuración" class="img-fluid" data-title="Configuración">
                             <div class="screenshot-overlay">
                                 <span>Configuración</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/5.png" alt="Historial" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/5.png" alt="Historial" class="img-fluid" data-title="Historial de Eventos">
                             <div class="screenshot-overlay">
                                 <span>Historial de Eventos</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/6.png" alt="Cuarentena" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/6.png" alt="Cuarentena" class="img-fluid" data-title="Cuarentena">
                             <div class="screenshot-overlay">
                                 <span>Cuarentena</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/7.png" alt="Plus" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/7.png" alt="Plus" class="img-fluid" data-title="Secure AI Plus">
                             <div class="screenshot-overlay">
                                 <span>Secure AI Plus</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <div class="screenshot-item">
-                            <img src="img/8.png" alt="Amenaza" class="img-fluid">
+                        <div class="screenshot-item" onclick="openLightbox(this)">
+                            <img src="img/8.png" alt="Amenaza" class="img-fluid" data-title="Detalle de Amenaza">
                             <div class="screenshot-overlay">
                                 <span>Detalle de Amenaza</span>
                             </div>
@@ -398,6 +398,14 @@
             </div>
         </div>
     </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev" onclick="event.stopPropagation(); changeLightbox(-1)">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation()">
+        <span class="lightbox-next" onclick="event.stopPropagation(); changeLightbox(1)">&#10095;</span>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
 
     <footer class="footer">
         <div class="container">

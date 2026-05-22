@@ -198,3 +198,43 @@ function initRevealAnimations() {
         observer.observe(card);
     });
 }
+
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function openLightbox(element) {
+    const items = document.querySelectorAll('.screenshot-item');
+    lightboxImages = Array.from(items).map(el => {
+        const img = el.querySelector('img');
+        return { src: img.src, title: img.getAttribute('data-title') || '' };
+    });
+    lightboxIndex = Array.from(items).indexOf(element);
+    showLightboxImage();
+    document.getElementById('lightbox').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', lightboxKeydown);
+}
+
+function showLightboxImage() {
+    const img = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    img.src = lightboxImages[lightboxIndex].src;
+    caption.textContent = lightboxImages[lightboxIndex].title;
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('show');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', lightboxKeydown);
+}
+
+function changeLightbox(dir) {
+    lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+    showLightboxImage();
+}
+
+function lightboxKeydown(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeLightbox(-1);
+    if (e.key === 'ArrowRight') changeLightbox(1);
+}
