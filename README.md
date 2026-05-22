@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/badge/Privacidad-100%25%20Local-00d4ff?style=flat-square" alt="100% Local"/>
   </p>
   <br>
-  <a href="https://agdala.github.io/SecureAI">🌐 Visitar Sitio Web</a>
+  <a href="https://agdalasv.github.io/secureai/">🌐 Visitar Sitio Web</a>
 </div>
 
 ---
