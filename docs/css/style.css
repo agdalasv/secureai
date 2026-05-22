@@ -494,6 +494,31 @@ section { position: relative; z-index: 1; }
     font-weight: 600;
 }
 
+.plus-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.price-tag {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.price-label {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
 .screenshot-item {
     position: relative;
     border-radius: 12px;

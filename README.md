@@ -56,7 +56,9 @@ Secure AI es un asistente de seguridad inteligente que protege tu PC **100% loca
 - Consulta de estado de Windows Defender
 - Agrega exclusiones para evitar falsos positivos
 
-## ⚡ Secure AI Plus
+## ⚡ Secure AI Plus — $3
+
+Adquiere la licencia Plus por **$3 USD** (licencia vitalicia por equipo). Contacta: **agdala.sv@gmail.com**
 
 La versión Plus activa micro-inteligencias artificiales expertas:
 
